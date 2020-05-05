@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	
+	<bean id ="memberDAO" class="org.kpu.di.persistence.MemberDAOImpl"></bean>
+	<bean id= "memberService" class ="org.kpu.di.service.MemberServiceImpl">
+		<constructor-arg ref="memberDAO"/> <!-- Constructor Setting -->
+	</bean>
+	
+	<bean id="memberAspect" class="org.kpu.aop.MemberAspect">
+	</bean>
+	
+	<aop:config>
+		<aop:aspect id="testAspect" ref="memberAspect">
+			<aop:pointcut id="readMethod" expression="execution(* read(String))"/>
+			<aop:before pointcut-ref="readMethod" method="beforeMethod" />
+			<aop:after pointcut-ref="readMethod" method="afterMethod"/>
+			<aop:after-returning pointcut-ref="readMethod" method="afterReturningMethod" returning="member"/>
+			<aop:around pointcut-ref="readMethod" method="aroundMethod"/>
+			<aop:after-throwing pointcut-ref="readMethod" method="afterThrowingMethod" throwing="ex"/>
+		</aop:aspect>
+	</aop:config>
+</beans>
