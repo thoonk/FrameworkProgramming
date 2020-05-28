@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+
 @Service
 public class MemberServiceImpl implements MemberService {
 	
@@ -36,7 +37,7 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.update(student);
 	}
 	
-	@Transactional ( propagation=Propagation.REQUIRED, isolation=Isolation.READ_COMMITTED, timeout=10 )
+	@Transactional ( propagation=Propagation.REQUIRED, isolation=Isolation.READ_COMMITTED, timeout=10 ) //NEVER, SUPPORTS, NOT_SUPPORTED, REQUIRED, MANDATORY
 	public void updateMemberList(StudentVO student1, StudentVO student2) throws Exception {
 		memberDAO.update(student2);
 		memberDAO.update(student1);
