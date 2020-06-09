@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.kpu.myapp.mapper.BoardMapper">
+
+	<select id="getTime" resultType="string">
+		select now()
+	</select>
+
+	<insert id="insert">
+		insert into tk_board (
+		num,
+		writer,
+		pwd,
+		sub,
+		content,
+		hit
+		) values(
+		#{num},
+		#{writer},
+		#{pwd},
+		#{sub},
+		#{content},
+		#{hit}
+		)
+	</insert>
+
+	<select id="selectBynum" resultType="BoardVO">
+		select * from tk_board where
+		num = #{num}
+	</select>
+
+	<select id="selectAll" resultType="org.kpu.myapp.domain.BoardVO">
+     <![CDATA[
+ 		select * from tk_board
+      ]]>
+	</select>
+
+	<update id="update">
+		update tk_board set sub = #{sub}, content = #{content}
+		where num = #{num}
+	</update>
+
+	<delete id="delete">
+		delete from tk_board where num = #{num}
+	</delete>
+
+	<update id="hitUpdate">
+		update tk_board set hit=hit+1 where num =
+		#{num}
+	</update>
+
+	<select id="isWriter">
+		select * from tk_board where writer = #{writer} and
+		pwd = #{pwd}
+	</select>
+
+</mapper>  
