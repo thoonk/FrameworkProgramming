@@ -1,6 +1,7 @@
 package org.kpu.myapp.domain;
 
-import java.sql.Date;
+import java.util.Date;
+
 
 public class BoardVO {
 	private int num;
@@ -10,6 +11,7 @@ public class BoardVO {
 	private String content;
 	private int hit;
 	private Date date;
+	
 	
 	public int getNum() {
 		return num;

@@ -11,5 +11,5 @@ public interface BoardDAO {
 	public List<BoardVO> readList() throws Exception;
 	public BoardVO read(int num) throws Exception;
 	public void setHitUpdate(int num) throws Exception;
-	public BoardVO isWriter(BoardVO board) throws Exception;
+	public boolean isWriter(BoardVO board) throws Exception;
 }

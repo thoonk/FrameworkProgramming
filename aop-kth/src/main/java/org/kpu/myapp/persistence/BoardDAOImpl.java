@@ -36,9 +36,7 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public List<BoardVO> readList() throws Exception {
-		List<BoardVO> boardList = new ArrayList<BoardVO>();
-		boardList = sqlSession.selectList(namespace + ".selectAll");
-		return boardList;
+		return sqlSession.selectList(namespace + ".selectAll");
 	}
 
 	@Override
@@ -53,7 +51,9 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public BoardVO isWriter(BoardVO board) throws Exception {
-		return sqlSession.selectOne(namespace + ".isWriter", board);
+	public boolean isWriter(BoardVO board) throws Exception {
+		String check = sqlSession.selectOne(namespace + ".isWriter", board);
+		//System.out.println("체크!!!!!" + check);
+		return (check == null) ? false : true;
 	}
 }

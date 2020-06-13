@@ -10,6 +10,6 @@ public interface BoardService {
 	public void deleteBoard(int num) throws Exception;
 	public List<BoardVO> readBoardList() throws Exception;
 	public BoardVO readBoard(int num) throws Exception;
-	public void hitUpdateBoard(int num) throws Exception;
-	public BoardVO writerCheck(BoardVO board) throws Exception;
+	public boolean writerCheck(BoardVO board) throws Exception;
+	public BoardVO readAndHitBoard(int num) throws Exception;
 }
