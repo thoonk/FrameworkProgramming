@@ -20,9 +20,12 @@
 .top {
 	background-color: rgb(0, 0, 0)
 }
+.ffon{font-family:cursive, "맑은 고딕"}
+
 </style>
 </head>
 <body>
+<div class="ffon">
 <div class="container me">
 			<div class="row">
 				<header>
@@ -44,11 +47,12 @@
 					</div>
 				</header>
 			</div>
-		</div><br><br><br>
+		</div><br><br><br><br>
 <div align=center>
 <c:if test="${msg=='failure'}">
-	<h1>비밀번호가 틀렸습니다.</h1>
+	<h2>Wrong Password.</h2>
 </c:if>
+</div>
 </div>
 </body>
 </html>
