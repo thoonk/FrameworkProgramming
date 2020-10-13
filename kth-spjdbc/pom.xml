@@ -8,7 +8,7 @@
 		<spring-framework.version>5.2.3.RELEASE</spring-framework.version>
 		<logback.version>1.2.3</logback.version>
 		<slf4j.version>1.7.30</slf4j.version>
-		<junit.version>4.12</junit.version>
+		<junit.version>4.13.1</junit.version>
   	</properties>
   	
   	<dependencies>
